@@ -37,7 +37,8 @@ class DockerCompose implements Extension
     {
         $optionsResolver->setDefaults(array(
             'description' => null,
-            'command'     => 'up'
+            'command'     => 'up',
+            'file'        => null,
         ));
     }
 
@@ -83,6 +84,11 @@ class DockerCompose implements Extension
     private function generateProcess(array $commandOptions)
     {
         $arguments = array('docker-compose');
+
+        if ($commandOptions['file']) {
+            $arguments['--file'] = '--file=' . $commandOptions['file'];
+        }
+
         $arguments[] = $commandOptions['command'];
 
         $process = $this->processFactory->createByArguments($arguments);
