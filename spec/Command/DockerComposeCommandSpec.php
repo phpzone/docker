@@ -10,7 +10,7 @@ class DockerComposeCommandSpec extends ObjectBehavior
 {
     public function let(Process $process)
     {
-        $this->beConstructedWith('command:test', $process);
+        $this->beConstructedWith('command:test', 'test description', $process);
     }
 
     public function it_is_initializable()
@@ -31,5 +31,10 @@ class DockerComposeCommandSpec extends ObjectBehavior
     public function it_should_have_process_when_process_given(Process $process)
     {
         $this->getProcess()->shouldBeLike($process);
+    }
+
+    public function it_should_have_description_when_description_given()
+    {
+        $this->getDescription()->shouldBeLike('test description');
     }
 }

@@ -36,6 +36,7 @@ class DockerCompose implements Extension
     private function configureOptions(OptionsResolver $optionsResolver)
     {
         $optionsResolver->setDefaults(array(
+            'description' => null,
             'command'     => 'up'
         ));
     }
@@ -67,7 +68,7 @@ class DockerCompose implements Extension
 
         $definition = new Definition('PhpZone\Docker\Command\DockerComposeCommand');
         $definition->setArguments(
-            array($commandName, $process)
+            array($commandName, $commandOptions['description'], $process)
         );
         $definition->addTag('command');
 

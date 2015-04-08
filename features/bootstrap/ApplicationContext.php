@@ -76,4 +76,12 @@ class ApplicationContext implements Context, SnippetAcceptingContext
 
         return $quotedCommandLine;
     }
+
+    /**
+     * @Then I should see :text in :command command description
+     */
+    public function iShouldSeeInCommandDescription($text, $command)
+    {
+        expect($this->application->get($command)->getDescription())->shouldBeLike($text);
+    }
 }

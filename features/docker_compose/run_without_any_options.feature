@@ -8,8 +8,8 @@ Feature: Run Docker Composer without any options
       """
       extensions:
           PhpZone\Docker\DockerCompose:
-              'docker-compose': ~
+              'command:one': ~
 
       """
     When I run phpzone
-    Then I should have "docker-compose" command with "docker-compose up" command line
+    Then I should have "command:one" command with "docker-compose up" command line
