@@ -36,5 +36,12 @@ class DockerComposeCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $process = $this->process;
+
+        $process->setTty(true);
+        $process->start();
+        $process->wait(function ($type, $buffer) use ($output) {
+            $output->write($buffer);
+        });
     }
 }
