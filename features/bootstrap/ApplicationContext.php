@@ -37,13 +37,43 @@ class ApplicationContext implements Context, SnippetAcceptingContext
     }
 
     /**
+     * @When I run phpzone
      * @When I run phpzone with :command
      */
-    public function iRunPhpzoneWith($command)
+    public function iRunPhpzoneWith($command = null)
     {
         $input = array('--no-tty' => true);
         $input = array_merge($input, array($command));
 
         $this->tester->run($input);
+    }
+
+    /**
+     * @Then I should have :command command with :commandLine command line
+     */
+    public function iShouldHaveCommandWithCommandLine($command, $commandLine)
+    {
+        $quotedCommandLine = $this->convertSimpleCommandLineIntoQuotedCommandLine($commandLine);
+
+        $command = $this->application->get($command);
+        expect($command->getProcess()->getCommandLine())->shouldBeLike($quotedCommandLine);
+    }
+
+    /**
+     * @param string $commandLine
+     *
+     * @return string
+     */
+    private function convertSimpleCommandLineIntoQuotedCommandLine($commandLine)
+    {
+        $arguments = explode(' ', $commandLine);
+
+        $quotedArguments = array_map(function ($argument) {
+            return "'" . $argument . "'";
+        }, $arguments);
+
+        $quotedCommandLine = implode(' ', $quotedArguments);
+
+        return $quotedCommandLine;
     }
 }

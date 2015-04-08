@@ -3,9 +3,11 @@
 namespace PhpZone\Docker;
 
 use PhpZone\PhpZone\Extension\Extension;
-use PhpZone\Shell\Process\ProcessFactory;
+use PhpZone\Docker\Process\ProcessFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Process\Process;
 
 class DockerCompose implements Extension
 {
@@ -27,10 +29,63 @@ class DockerCompose implements Extension
         $this->configureOptions($this->optionsResolver);
 
         $config = $container->getParameter(get_class($this));
+
+        $this->createAndRegisterDefinitions($config);
     }
 
     private function configureOptions(OptionsResolver $optionsResolver)
     {
+        $optionsResolver->setDefaults(array(
+            'command'     => 'up'
+        ));
+    }
 
+    private function createAndRegisterDefinitions(array $config = array())
+    {
+        foreach ($config as $commandName => $commandOptions) {
+            if ($commandOptions === null) {
+                $commandOptions = array();
+            }
+
+            $definition = $this->generateCommandDefinition($commandName, $commandOptions);
+
+            $this->container->setDefinition('phpzone.docker_compose.' . $commandName, $definition);
+        }
+    }
+
+    /**
+     * @param string $commandName
+     * @param array $commandOptions
+     *
+     * @return Definition
+     */
+    private function generateCommandDefinition($commandName, array $commandOptions)
+    {
+        $commandOptions = $this->optionsResolver->resolve($commandOptions);
+
+        $process = $this->generateProcess($commandOptions);
+
+        $definition = new Definition('PhpZone\Docker\Command\DockerComposeCommand');
+        $definition->setArguments(
+            array($commandName, $process)
+        );
+        $definition->addTag('command');
+
+        return $definition;
+    }
+
+    /**
+     * @param array $commandOptions
+     *
+     * @return Process
+     */
+    private function generateProcess(array $commandOptions)
+    {
+        $arguments = array('docker-compose');
+        $arguments[] = $commandOptions['command'];
+
+        $process = $this->processFactory->createByArguments($arguments);
+
+        return $process;
     }
 }
