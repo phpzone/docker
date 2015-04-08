@@ -39,6 +39,7 @@ class DockerCompose implements Extension
             'description' => null,
             'command'     => 'up',
             'file'        => null,
+            'name'        => null,
         ));
     }
 
@@ -86,7 +87,13 @@ class DockerCompose implements Extension
         $arguments = array('docker-compose');
 
         if ($commandOptions['file']) {
-            $arguments['--file'] = '--file=' . $commandOptions['file'];
+            $arguments[] = '-f';
+            $arguments[] = $commandOptions['file'];
+        }
+
+        if ($commandOptions['name']) {
+            $arguments[] = '-p';
+            $arguments[] = $commandOptions['name'];
         }
 
         $arguments[] = $commandOptions['command'];

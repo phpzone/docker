@@ -13,4 +13,4 @@ Feature: Specifying a path of config file for Docker Compose command
 
       """
     When I run phpzone
-    Then I should have "command:three" command with "docker-compose --file=docker-compose.yml up" command line
+    Then I should have "command:three" command with "docker-compose -f docker-compose.yml up" command line
