@@ -12,8 +12,8 @@ class DockerComposeSpec extends ObjectBehavior
         $this->shouldHaveType('PhpZone\Docker\DockerCompose');
     }
 
-    public function it_should_implement_phpzone_extension()
+    public function it_should_implement_symfony_di_extension()
     {
-        $this->shouldImplement('PhpZone\PhpZone\Extension\Extension');
+        $this->shouldImplement('Symfony\Component\DependencyInjection\Extension\ExtensionInterface');
     }
 }
