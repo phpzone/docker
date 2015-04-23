@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\PhpZone\Docker\Command;
+namespace spec\PhpZone\Docker\Console\Command;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -15,7 +15,7 @@ class DockerComposeCommandSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('PhpZone\Docker\Command\DockerComposeCommand');
+        $this->shouldHaveType('PhpZone\Docker\Console\Command\DockerComposeCommand');
     }
 
     public function it_should_extend_symfony_command()

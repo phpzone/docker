@@ -2,8 +2,10 @@
 
 namespace PhpZone\Docker;
 
+use PhpZone\Docker\Config\Definition\Configuration;
 use PhpZone\PhpZone\Extension\AbstractExtension;
 use PhpZone\Docker\Process\ProcessFactory;
+use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,13 +24,28 @@ class DockerCompose extends AbstractExtension
 
     public function load(array $config, ContainerBuilder $container)
     {
+//        $this->container = $container;
+//
+//        $this->optionsResolver = new OptionsResolver();
+//        $this->configureOptions($this->optionsResolver);
+//
+//        $processor = new Processor();
+//        $configuration = new Configuration();
+//        $processedConfig = $processor->processConfiguration($configuration, $config);
+//
+//        $this->createAndRegisterDefinitions($processedConfig);
+
         $this->container = $container;
         $this->processFactory = new ProcessFactory();
 
         $this->optionsResolver = new OptionsResolver();
         $this->configureOptions($this->optionsResolver);
 
-        $this->createAndRegisterDefinitions($config[0]);
+        $processor = new Processor();
+        $configuration = new Configuration();
+        $processedConfig = $processor->processConfiguration($configuration, $config);
+
+        $this->createAndRegisterDefinitions($processedConfig);
     }
 
     private function configureOptions(OptionsResolver $optionsResolver)
@@ -44,10 +61,6 @@ class DockerCompose extends AbstractExtension
     private function createAndRegisterDefinitions(array $config = array())
     {
         foreach ($config as $commandName => $commandOptions) {
-            if ($commandOptions === null) {
-                $commandOptions = array();
-            }
-
             $definition = $this->generateCommandDefinition($commandName, $commandOptions);
 
             $this->container->setDefinition('phpzone.docker_compose.' . $commandName, $definition);
@@ -66,7 +79,7 @@ class DockerCompose extends AbstractExtension
 
         $process = $this->generateProcess($commandOptions);
 
-        $definition = new Definition('PhpZone\Docker\Command\DockerComposeCommand');
+        $definition = new Definition('PhpZone\Docker\Console\Command\DockerComposeCommand');
         $definition->setArguments(
             array($commandName, $commandOptions['description'], $process)
         );

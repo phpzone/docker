@@ -15,7 +15,8 @@
         "phpzone/phpzone":              "dev-master",
         "symfony/dependency-injection": "~2.3",
         "symfony/process":              "~2.3",
-        "symfony/options-resolver":     "~2.3"
+        "symfony/options-resolver":     "~2.3",
+        "symfony/config":               "~2.3"
     },
 
     "require-dev": {
@@ -24,7 +25,8 @@
         "squizlabs/php_codesniffer":           "~2.3",
         "jakubzapletal/php_codesniffer-rules": "~0.1",
         "bossa/phpspec2-expect":               "~1.0",
-        "phpzone/shell":                       "dev-master"
+        "phpzone/shell":                       "dev-master",
+        "phpunit/phpunit":                     "~4.6"
     },
 
     "autoload": {
