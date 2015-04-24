@@ -1,0 +1,12 @@
+services:
+
+    phpzone.docker.script_builder.docker_compose:
+        alias: phpzone.docker.console.script.builder.docker_compose
+
+    phpzone.docker.console.script.builder.docker_compose:
+        class: PhpZone\Docker\Console\Script\Builder\DockerComposeBuilder
+
+    phpzone.docker.tester.script_builder.docker_compose:
+        class: PhpZone\Docker\Tester\Console\Script\Builder\BuilderTester
+        arguments:
+            - @phpzone.docker.console.script.builder.docker_compose

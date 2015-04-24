@@ -3,14 +3,18 @@
 namespace spec\PhpZone\Docker\Console\Command;
 
 use PhpSpec\ObjectBehavior;
+use PhpZone\Docker\Console\Script\Builder\Builder;
 use Prophecy\Argument;
-use Symfony\Component\Process\Process;
 
 class DockerComposeCommandSpec extends ObjectBehavior
 {
-    public function let(Process $process)
+    public function let(Builder $builder)
     {
-        $this->beConstructedWith('command:test', 'test description', $process);
+        $options = array(
+            'description' => 'test description',
+        );
+
+        $this->beConstructedWith('command:test', $options, $builder);
     }
 
     public function it_is_initializable()
@@ -26,11 +30,6 @@ class DockerComposeCommandSpec extends ObjectBehavior
     public function it_should_have_name_when_name_given()
     {
         $this->getName()->shouldBeLike('command:test');
-    }
-
-    public function it_should_have_process_when_process_given(Process $process)
-    {
-        $this->getProcess()->shouldBeLike($process);
     }
 
     public function it_should_have_description_when_description_given()

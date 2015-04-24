@@ -2,46 +2,70 @@
 
 namespace PhpZone\Docker\Console\Command;
 
+use PhpZone\Docker\Console\Script\Builder\Builder as ScriptBuilder;
+use PhpZone\Shell\Console\Command\ScriptCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Process\Process;
 
 class DockerComposeCommand extends Command
 {
-    /** @var Process */
-    private $process;
+    /** @var array */
+    private $scriptOptions;
+
+    /** @var ScriptBuilder */
+    private $scriptBuilder;
 
     /**
      * @param string $name
-     * @param string $description
-     * @param Process $process
+     * @param array $options
      */
-    public function __construct($name, $description, Process $process)
+    public function __construct($name, array $options, ScriptBuilder $scriptBuilder)
     {
-        $this->process = $process;
+        $this->scriptBuilder = $scriptBuilder;
 
-        $this->setDescription($description);
+        if (!empty($options['description'])) {
+            $this->setDescription($options['description']);
+        }
+        unset($options['description']);
+
+        $this->scriptOptions = $options;
 
         parent::__construct($name);
     }
 
-    /**
-     * @return Process
-     */
-    public function getProcess()
+    protected function configure()
     {
-        return $this->process;
+        $this->addOption(
+            '--no-tty',
+            null,
+            InputOption::VALUE_NONE,
+            'Disable TTY mode'
+        );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $process = $this->process;
+        $inputParameters = array(
+            '--no-tty' => false
+        );
 
-        $process->setTty(true);
-        $process->start();
-        $process->wait(function ($type, $buffer) use ($output) {
-            $output->write($buffer);
-        });
+        if ($input->getOption('no-tty')) {
+            $inputParameters['--no-tty'] = $input->getOption('no-tty');
+        }
+
+        $uniqueId = uniqid($this->getName() . ':');
+
+        $inputParameters['command'] = $uniqueId;
+
+        $script = $this->scriptBuilder->build($this->scriptOptions);
+
+        $command = new ScriptCommand($uniqueId, $script);
+        $command->setApplication($this->getApplication());
+        $exitCode = $command->run(new ArrayInput($inputParameters), $output);
+
+        return $exitCode;
     }
 }

@@ -36,6 +36,11 @@ class ApplicationContext implements Context, SnippetAcceptingContext
         $this->application = $application;
 
         $this->tester = new ApplicationTester($this->application);
+
+        $container->setAlias(
+            'phpzone.docker.script_builder.docker_compose',
+            'phpzone.docker.tester.script_builder.docker_compose'
+        );
     }
 
     /**
@@ -51,32 +56,11 @@ class ApplicationContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Then I should have :command command with :commandLine command line
+     * @Then I should have running :script
      */
-    public function iShouldHaveCommandWithCommandLine($command, $commandLine)
+    public function iShouldHaveRunning($script)
     {
-        $quotedCommandLine = $this->convertSimpleCommandLineIntoQuotedCommandLine($commandLine);
-
-        $command = $this->application->get($command);
-        expect($command->getProcess()->getCommandLine())->shouldBeLike($quotedCommandLine);
-    }
-
-    /**
-     * @param string $commandLine
-     *
-     * @return string
-     */
-    private function convertSimpleCommandLineIntoQuotedCommandLine($commandLine)
-    {
-        $arguments = explode(' ', $commandLine);
-
-        $quotedArguments = array_map(function ($argument) {
-            return "'" . $argument . "'";
-        }, $arguments);
-
-        $quotedCommandLine = implode(' ', $quotedArguments);
-
-        return $quotedCommandLine;
+        expect($this->tester->getDisplay())->toBe($script . PHP_EOL);
     }
 
     /**
