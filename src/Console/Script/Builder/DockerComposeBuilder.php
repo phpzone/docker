@@ -6,7 +6,7 @@ class DockerComposeBuilder implements Builder
 {
     /** @var array */
     private $allowedCommands = array(
-        'build', 'kill', 'logs', 'port', 'ps', 'pull', 'rm', 'scale', 'start', 'stop', 'up'
+        'build', 'kill', 'logs', 'ps', 'pull', 'rm', 'scale', 'start', 'stop', 'up'
     );
 
     /**

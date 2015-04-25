@@ -20,7 +20,6 @@ Feature: Defining the command for a Docker Compose command
       | build   |
       | kill    |
       | logs    |
-      | port    |
       | ps      |
       | pull    |
       | rm      |

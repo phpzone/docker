@@ -19,7 +19,6 @@ Feature: Overwriting a command value of a Docker Compose command by an option
       | build  |
       | kill   |
       | logs   |
-      | port   |
       | ps     |
       | pull   |
       | rm     |

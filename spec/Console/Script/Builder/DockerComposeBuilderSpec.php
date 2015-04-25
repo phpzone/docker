@@ -72,15 +72,6 @@ class DockerComposeBuilderSpec extends ObjectBehavior
         $this->build($options)->shouldBeLike('docker-compose logs');
     }
 
-    public function it_should_build_port_command()
-    {
-        $options = array(
-            'command' => 'port'
-        );
-
-        $this->build($options)->shouldBeLike('docker-compose port');
-    }
-
     public function it_should_build_ps_command()
     {
         $options = array(
