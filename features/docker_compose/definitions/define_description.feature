@@ -1,9 +1,9 @@
-Feature: Specifying a description for Docker Compose command
+Feature: Defining a description for a Docker Compose command
   As a developer
-  I want to be able to specify a description for command
+  I want to be able to define a description for a command
   So I can see what defined command does
 
-  Scenario: Specifying a description for Docker Compose command
+  Scenario: Defining a description for a Docker Compose command
     Given there is a config file with:
       """
       extensions:

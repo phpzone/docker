@@ -1,9 +1,9 @@
-Feature: Defining a path of config file for Docker Compose command
+Feature: Defining a path of config file for a Docker Compose command
   As a developer
-  I want to be able to define a path of config file for command
+  I want to be able to define a path of config file for a command
   So I can use existing Docker Compose config file
 
-  Scenario: Defining a path of config file for Docker Compose command
+  Scenario: Defining a path of config file for a Docker Compose command
     Given there is a config file with:
       """
       extensions:

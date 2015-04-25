@@ -1,9 +1,9 @@
-Feature: Defining a project name for Docker Compose command
+Feature: Defining a project name for a Docker Compose command
   As a developer
-  I want to be able to define a project name for command
+  I want to be able to define a project name for a command
   So I can easily recognize running instances in Docker
 
-  Scenario: Defining a project name for Docker Compose command
+  Scenario: Defining a project name for a Docker Compose command
     Given there is a config file with:
       """
       extensions:

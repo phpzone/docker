@@ -15,13 +15,25 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'command'     => 'up',
                 'file'        => 'docker-compose.yml',
                 'name'        => 'instances',
+                'verbose'     => true,
+                'build'       => array(
+                    'no-cache' => true,
+                ),
+                'rm'          => array(
+                    'force' => true,
+                ),
+                'scale'       => array(
+                    'web'    => 2,
+                    'worker' => 3,
+                ),
+                'up'          => array(
+                    'daemon'      => true,
+                    'no-recreate' => true,
+                    'no-build'    => true,
+                ),
             ),
             0 => array(
                 'id'          => 'command:2',
-                'description' => 'description_value',
-                'command'     => 'up',
-                'file'        => 'docker-compose.yml',
-                'name'        => 'instances',
             ),
         );
 
@@ -37,12 +49,25 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'command'     => 'up',
                 'file'        => 'docker-compose.yml',
                 'name'        => 'instances',
+                'verbose'     => true,
+                'build'       => array(
+                    'no_cache' => true,
+                ),
+                'rm'          => array(
+                    'force' => true,
+                ),
+                'scale'       => array(
+                    'web'    => 2,
+                    'worker' => 3,
+                ),
+                'up'          => array(
+                    'daemon'      => true,
+                    'no_recreate' => true,
+                    'no_build'    => true,
+                ),
             ),
             'command:2' => array(
-                'description' => 'description_value',
-                'command'     => 'up',
-                'file'        => 'docker-compose.yml',
-                'name'        => 'instances',
+                'scale' => array(),
             ),
         ));
     }

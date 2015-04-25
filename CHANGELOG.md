@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased][unreleased]
+### Added
+- Definitions for options of Docker Compose commands `build`, `rm`, `scale` and `up`.
+- Definition `verbose` for showing more output in Docker Compose.
+- Definitions for Docker Compose commands `build`, `kill`, `logs`, `port`, `ps`, `pull`, `rm`, `scale`, `start`,
+`stop` and `up`.
+
 ### Fixed
 - BC changes for extensions in PhpZone 0.2.
 

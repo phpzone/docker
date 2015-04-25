@@ -11,7 +11,6 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader as ContainerYamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Process\Process;
 
 class DockerCompose extends AbstractExtension
 {
@@ -45,6 +44,11 @@ class DockerCompose extends AbstractExtension
             'command'     => 'up',
             'file'        => null,
             'name'        => null,
+            'verbose'     => false,
+            'build'       => array(),
+            'rm'          => array(),
+            'scale'       => array(),
+            'up'          => array(),
         ));
     }
 
