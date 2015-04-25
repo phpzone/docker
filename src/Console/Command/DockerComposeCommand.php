@@ -21,6 +21,11 @@ class DockerComposeCommand extends Command
     /** @var bool */
     private $enabled = true;
 
+    /** @var array */
+    private $allowedCommands = array(
+        'build', 'kill', 'logs', 'port', 'ps', 'pull', 'rm', 'scale', 'start', 'stop', 'up'
+    );
+
     /**
      * @param string $name
      * @param array $options
@@ -54,6 +59,15 @@ class DockerComposeCommand extends Command
             InputOption::VALUE_NONE,
             'Disable TTY mode'
         );
+
+        foreach ($this->allowedCommands as $allowedCommand) {
+            $this->addOption(
+                '--' . $allowedCommand,
+                null,
+                InputOption::VALUE_NONE,
+                'Overwrite defined command by <comment>' . $allowedCommand . '</comment>'
+            );
+        }
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -69,6 +83,12 @@ class DockerComposeCommand extends Command
         $uniqueId = uniqid($this->getName() . ':');
 
         $inputParameters['command'] = $uniqueId;
+
+        foreach ($this->allowedCommands as $allowedCommand) {
+            if ($input->getOption($allowedCommand)) {
+                $this->scriptOptions['command'] = $allowedCommand;
+            }
+        }
 
         $script = $this->scriptBuilder->build($this->scriptOptions);
 
