@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased][unreleased]
 ### Added
+- Definition `parent` for an inheritance of Docker Compose commands.
 - Options to rewrite a definition command of a Docker Compose command by another allowed one.
 - Definition `help` for a Docker Compose command help.
 - Definition `enable` to enable/disable a Docker Compose command.

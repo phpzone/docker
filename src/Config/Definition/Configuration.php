@@ -48,6 +48,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                     ->booleanNode('enable')->end()
                     ->scalarNode('help')->end()
+                    ->scalarNode('parent')->end()
                 ->end()
             ->end()
         ;

@@ -3,6 +3,7 @@
 namespace PhpZone\Docker;
 
 use PhpZone\Docker\Config\Definition\Configuration;
+use PhpZone\Docker\Config\Definition\ParentResolver;
 use PhpZone\PhpZone\Extension\AbstractExtension;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
@@ -33,6 +34,9 @@ class DockerCompose extends AbstractExtension
         $processor = new Processor();
         $configuration = new Configuration();
         $processedConfig = $processor->processConfiguration($configuration, $config);
+
+        $parentResolver = new ParentResolver();
+        $processedConfig = $parentResolver->resolve($processedConfig);
 
         $this->createAndRegisterDefinitions($processedConfig);
     }
