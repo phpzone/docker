@@ -12,6 +12,7 @@ class DockerComposeCommandSpec extends ObjectBehavior
     {
         $options = array(
             'description' => 'test description',
+            'enable'      => false,
         );
 
         $this->beConstructedWith('command:test', $options, $builder);
@@ -35,5 +36,10 @@ class DockerComposeCommandSpec extends ObjectBehavior
     public function it_should_have_description_when_description_given()
     {
         $this->getDescription()->shouldBeLike('test description');
+    }
+
+    public function it_should_been_disabled_when_enable_false_given()
+    {
+        $this->isEnabled()->shouldBeLike(false);
     }
 }

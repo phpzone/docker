@@ -69,4 +69,20 @@ class ApplicationContext implements Context, SnippetAcceptingContext
     {
         expect($this->application->get($command)->getDescription())->shouldBeLike($text);
     }
+
+    /**
+     * @Then I should have :commandName command
+     */
+    public function iShouldHaveCommand($commandName)
+    {
+        expect($this->application->has($commandName))->toBe(true);
+    }
+
+    /**
+     * @Then I should not have :commandName command
+     */
+    public function iShouldNotHaveCommand($commandName)
+    {
+        expect($this->application->has($commandName))->toBe(false);
+    }
 }

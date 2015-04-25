@@ -18,6 +18,9 @@ class DockerComposeCommand extends Command
     /** @var ScriptBuilder */
     private $scriptBuilder;
 
+    /** @var bool */
+    private $enabled = true;
+
     /**
      * @param string $name
      * @param array $options
@@ -29,7 +32,10 @@ class DockerComposeCommand extends Command
         if (!empty($options['description'])) {
             $this->setDescription($options['description']);
         }
-        unset($options['description']);
+
+        if (isset($options['enable'])) {
+            $this->enabled = $options['enable'];
+        }
 
         $this->scriptOptions = $options;
 
@@ -67,5 +73,13 @@ class DockerComposeCommand extends Command
         $exitCode = $command->run(new ArrayInput($inputParameters), $output);
 
         return $exitCode;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->enabled;
     }
 }

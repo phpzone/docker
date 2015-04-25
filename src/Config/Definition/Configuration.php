@@ -46,6 +46,7 @@ class Configuration implements ConfigurationInterface
                             ->booleanNode('no_build')->end()
                         ->end()
                     ->end()
+                    ->booleanNode('enable')->end()
                 ->end()
             ->end()
         ;

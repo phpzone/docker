@@ -31,6 +31,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                     'no-recreate' => true,
                     'no-build'    => true,
                 ),
+                'enable'      => false,
             ),
             0 => array(
                 'id'          => 'command:2',
@@ -65,6 +66,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                     'no_recreate' => true,
                     'no_build'    => true,
                 ),
+                'enable'      => false,
             ),
             'command:2' => array(
                 'scale' => array(),
