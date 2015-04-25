@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased][unreleased]
 ### Added
+- Definition `help` for a Docker Compose command help.
 - Definition `enable` to enable/disable a Docker Compose command.
 - Definitions for options of Docker Compose commands `build`, `rm`, `scale` and `up`.
 - Definition `verbose` for showing more output in Docker Compose.

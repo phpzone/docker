@@ -37,6 +37,10 @@ class DockerComposeCommand extends Command
             $this->enabled = $options['enable'];
         }
 
+        if (!empty($options['help'])) {
+            $this->setHelp($options['help']);
+        }
+
         $this->scriptOptions = $options;
 
         parent::__construct($name);

@@ -50,6 +50,7 @@ class DockerCompose extends AbstractExtension
             'scale'       => array(),
             'up'          => array(),
             'enable'      => true,
+            'help'        => null,
         ));
     }
 

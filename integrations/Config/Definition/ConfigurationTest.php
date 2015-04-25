@@ -32,6 +32,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                     'no-build'    => true,
                 ),
                 'enable'      => false,
+                'help'        => 'help_value',
             ),
             0 => array(
                 'id'          => 'command:2',
@@ -67,6 +68,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                     'no_build'    => true,
                 ),
                 'enable'      => false,
+                'help'        => 'help_value',
             ),
             'command:2' => array(
                 'scale' => array(),

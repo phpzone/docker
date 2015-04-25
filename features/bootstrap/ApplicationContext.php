@@ -85,4 +85,12 @@ class ApplicationContext implements Context, SnippetAcceptingContext
     {
         expect($this->application->has($commandName))->toBe(false);
     }
+
+    /**
+     * @Then I should see :text in :command command help
+     */
+    public function iShouldSeeInCommandHelp($text, $command)
+    {
+        expect($this->application->get($command)->getHelp())->shouldBeLike($text);
+    }
 }
