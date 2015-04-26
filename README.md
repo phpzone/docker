@@ -52,4 +52,4 @@ For more details visit [PhpZone Docker documentation].
 [PhpZone]: https://github.com/phpzone/phpzone
 [Docker]: https://docs.docker.com
 [Docker Compose]: https://docs.docker.com/compose
-[PhpZone Docker documentation]: http://www.phpzone.org/projects/phpzone-docker
+[PhpZone Docker documentation]: http://docs.phpzone.org/projects/phpzone-docker

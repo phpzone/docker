@@ -4,7 +4,7 @@ PhpZone Docker
 .. toctree::
     :hidden:
 
-    PhpZone <http://www.phpzone.org>
+    PhpZone <http://docs.phpzone.org>
 
 A Docker command builder configured by `YAML`_, based on `PhpZone`_. Its primary purpose is to
 provide a simple way to define commands for running Docker containers/instances which could be used in daily workflow
@@ -44,6 +44,6 @@ and run:
 This will compose a proper Docker Compose command and execute it.
 
 .. _YAML: http://symfony.com/doc/current/components/yaml/yaml_format.html
-.. _PhpZone: http://www.phpzone.org
+.. _PhpZone: http://docs.phpzone.org
 .. _Docker: https://docs.docker.com
 .. _Docker Compose: https://docs.docker.com/compose
