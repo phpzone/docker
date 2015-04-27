@@ -3,8 +3,18 @@ PhpZone Docker
 
 .. toctree::
     :hidden:
+    :caption: Docker Compose
+    :numbered:
+
+    docker-compose/getting-started
+
+.. toctree::
+    :hidden:
+    :caption: Links
 
     PhpZone <http://docs.phpzone.org>
+    PhpZone Shell <http://docs.phpzone.org/projects/phpzone-shell>
+
 
 A Docker command builder configured by `YAML`_, based on `PhpZone`_. Its primary purpose is to
 provide a simple way to define commands for running Docker containers/instances which could be used in daily workflow
@@ -13,8 +23,8 @@ understand what is running. It is not only about the knowledge but also experien
 in keeping ready-made commands.
 
 .. attention::
-    This tool is only a configurator and executor of Docker commands, so to make it working you must have installed
-    `Docker`_ and `Docker Compose`_ your own.
+    This tool is only a configurator and executor of Docker commands, it means applications `Docker`_ and
+    `Docker Compose`_  are not included.
 
 Basic Usage
 -----------
@@ -41,7 +51,8 @@ and run:
 
     $ vendor/bin/phpzone db
 
-This will compose a proper Docker Compose command and execute it.
+This will compose a proper Docker Compose command ``docker-compose -f docker-compose.yml -p myproject up`` and
+execute it.
 
 .. _YAML: http://symfony.com/doc/current/components/yaml/yaml_format.html
 .. _PhpZone: http://docs.phpzone.org

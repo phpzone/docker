@@ -14,8 +14,8 @@ of every developer. Since now not all developers need to have a knowledge about 
 understand what is running. It is not only about the knowledge but also experienced developers can find an advantage
 in keeping ready-made commands.
 
-**This tool is only a configurator and executor of Docker commands, so to make it working you must have installed
-[Docker] and [Docker Compose] your own.**
+**This tool is only a configurator and executor of Docker commands, it means applications [Docker] and
+[Docker Compose] are not included.**
 
 ## Basic Usage
 
@@ -41,7 +41,8 @@ and run:
 $ vendor/bin/phpzone db
 ```
 
-This will compose a proper Docker Compose command and execute it.
+This will compose a proper Docker Compose command `docker-compose -f docker-compose.yml -p myproject up` and
+execute it.
 
 ## Documentation
 
