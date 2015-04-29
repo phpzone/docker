@@ -7,6 +7,8 @@ PhpZone Docker
     :numbered:
 
     docker-compose/getting-started
+    docker-compose/definitions-for-command
+    docker-compose/options-for-command
 
 .. toctree::
     :hidden:
