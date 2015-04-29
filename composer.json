@@ -12,11 +12,11 @@
 
     "require": {
         "php":                          ">=5.3",
-        "phpzone/phpzone":              "dev-master",
+        "phpzone/phpzone":              "0.2.0-beta",
         "symfony/dependency-injection": "~2.3",
         "symfony/options-resolver":     "~2.3",
         "symfony/config":               "~2.3",
-        "phpzone/shell":                "dev-master"
+        "phpzone/shell":                "0.2.0-beta"
     },
 
     "require-dev": {
@@ -42,5 +42,9 @@
 
     "config": {
         "bin-dir": "bin/"
+    },
+
+    "conflict": {
+        "phpzone/phpzone":  "0.1.*"
     }
 }
