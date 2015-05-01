@@ -20,12 +20,11 @@ PhpZone Docker
 
 A Docker command builder configured by `YAML`_, based on `PhpZone`_. Its primary purpose is to
 provide a simple way to define commands for running Docker containers/instances which could be used in daily workflow
-of every developer. Since now not all developers need to have a knowledge about Docker but still everyone can simply
-understand what is running. It is not only about the knowledge but also experienced developers can find an advantage
-in keeping ready-made commands.
+of every developer. With this plugin, you no longer need to have advanced knowledge about Docker, as you can add store
+simple commands to your configuration. This is also useful for advanced users who want to store ready-made commands.
 
 .. attention::
-    This tool is only a configurator and executor of Docker commands, it means applications `Docker`_ and
+    This tool is only a configurator and executor of Docker commands, applications `Docker`_ and
     `Docker Compose`_  are not included.
 
 Basic Usage

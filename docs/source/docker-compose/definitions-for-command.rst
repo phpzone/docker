@@ -46,7 +46,7 @@ Example with default values:
                 verbose: false
 
 .. note::
-    The order of definitions can be random.
+    The order of the definitions is not important.
 
 .. note::
     Not required definitions don't need to be set.
