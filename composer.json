@@ -48,6 +48,10 @@
         "phpzone/phpzone":  "0.1.*"
     },
 
+    "scripts": {
+        "test": "phpzone tests"
+    },
+
     "extra": {
         "branch-alias": {
             "dev-master": "0.2.x-dev"
