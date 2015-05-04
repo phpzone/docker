@@ -40,10 +40,6 @@
         }
     },
 
-    "config": {
-        "bin-dir": "bin/"
-    },
-
     "conflict": {
         "phpzone/phpzone":  "0.1.*"
     },

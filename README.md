@@ -44,6 +44,14 @@ $ vendor/bin/phpzone db
 This will compose a proper Docker Compose command `docker-compose -f docker-compose.yml -p myproject up` and
 execute it.
 
+## Development
+
+To run tests, run:
+
+```bash
+$ composer test
+```
+
 ## Documentation
 
 For more details visit [PhpZone Docker documentation].
