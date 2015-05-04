@@ -40,8 +40,8 @@
         }
     },
 
-    "config": {
-        "bin-dir": "bin/"
+    "scripts": {
+        "test": "phpzone tests"
     },
 
     "conflict": {
