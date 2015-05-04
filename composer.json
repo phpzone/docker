@@ -40,12 +40,12 @@
         }
     },
 
-    "conflict": {
-        "phpzone/phpzone":  "0.1.*"
-    },
-
     "scripts": {
         "test": "phpzone tests"
+    },
+
+    "conflict": {
+        "phpzone/phpzone":  "0.1.*"
     },
 
     "extra": {
